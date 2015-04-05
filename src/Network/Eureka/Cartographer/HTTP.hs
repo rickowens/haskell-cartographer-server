@@ -5,7 +5,7 @@
 {- |
   This is where all the real code for the cartographer lives.
 -}
-module Network.Eureka.Cartographer (
+module Network.Eureka.Cartographer.HTTP (
   Config(..),
   withEureka,
   website
