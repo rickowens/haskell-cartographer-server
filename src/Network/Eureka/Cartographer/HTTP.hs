@@ -25,17 +25,16 @@ import Data.GraphViz (DotGraph(DotGraph, strictGraph, directedGraph,
   GraphvizCommand(Dot), graphvizWithHandle, DotNode(DotNode, nodeID,
   nodeAttributes))
 import Data.List.Split (splitOn)
-import Data.Map (insert, elems, lookup, keys)
+import Data.Map (elems, lookup, keys)
 import Data.Maybe (fromMaybe)
 import Data.Text.Encoding (decodeUtf8)
 import Data.Text.Lazy (Text)
 import GHC.Generics (Generic)
 import Network.Eureka (EurekaConfig(eurekaServerServiceUrls),
   DataCenterInfo(DataCenterMyOwn, DataCenterAmazon), EurekaConnection,
-  InstanceConfig(InstanceConfig, instanceMetadata),
-  def, discoverDataCenterAmazon, lookupAllApplications,
+  InstanceConfig, def, discoverDataCenterAmazon, lookupAllApplications,
   InstanceInfo(InstanceInfo, instanceInfoMetadata))
-import Network.Eureka.Cartographer.TH (readDot)
+import Network.Eureka.Cartographer.TH (addCartographerMetadata)
 import Network.HTTP.Client (withManager, defaultManagerSettings)
 import Snap (Snap, writeBS, modifyResponse, setHeader, getParam)
 import System.IO.Unsafe (unsafePerformIO)
@@ -110,18 +109,9 @@ eurekaWithServiceUrls
   -> DataCenterInfo
   -> (EurekaConnection -> IO a)
   -> IO a
-eurekaWithServiceUrls urls = E.withEureka eurekaConfig . addMetadata
+eurekaWithServiceUrls urls =
+    E.withEureka eurekaConfig . $(addCartographerMetadata "cartography.dot")
   where
-    {- |
-      Adds the cartography metadata to the instance config.
-    -}
-    addMetadata :: InstanceConfig -> InstanceConfig
-    addMetadata conf@InstanceConfig {instanceMetadata} =
-      conf {
-          instanceMetadata =
-            insert "cartography" $(readDot) instanceMetadata
-      }
-
     eurekaConfig = def {
         eurekaServerServiceUrls = Map.fromList [("default", urls)]
       }
