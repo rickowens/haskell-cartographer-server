@@ -26,6 +26,7 @@ executable cartographer
     base,
     bytestring,
     canteven-config,
+    cartographer-lib >= 0.1 && < 0.2,
     containers,
     eureka-client >= 0.4.1 && < 0.5,
     graphviz,
