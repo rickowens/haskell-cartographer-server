@@ -16,7 +16,7 @@ import Data.Version (showVersion)
 import Network.Eureka (InstanceConfig(instanceAppName,
   instanceNonSecurePort), def)
 import Network.Eureka.Cartographer.HTTP (Config(Config, eureka), withEureka, website)
-import Paths_cartographer (version)
+import Paths_cartographer_server (version)
 import Snap (Snap, pass, getsRequest, rqPathInfo)
 import Web.Moonshine (runMoonshine, setBanner, setServerVersion, liftSnap, notFound)
 
