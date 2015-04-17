@@ -1,0 +1,16 @@
+
+logging:
+  level: <%= @logLevel %>
+
+server:
+  applicationConnector:
+    - scheme: HTTP
+      port: 8080
+  adminConnector:
+    - scheme: HTTP
+      port: 8081
+
+eureka:
+  datacenterType: <%= @datacenterType %>
+  serviceUrls: <%= @serviceUrls %>
+
