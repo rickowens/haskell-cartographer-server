@@ -25,7 +25,7 @@ executable cartographer
     aeson,
     base,
     bytestring,
-    canteven-config,
+    canteven-config >= 0.1 && < 0.2,
     cartographer-lib >= 0.1 && < 0.2,
     containers,
     eureka-client >= 0.4.1 && < 0.5,
