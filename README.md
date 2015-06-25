@@ -49,6 +49,11 @@ Example:
         "my-service" -> "eureka";
     }
 
+For information on the DOT language, see:
+
+- http://www.graphviz.org/content/dot-language
+- https://en.wikipedia.org/wiki/DOT_%28graph_description_language%29
+
 
 ## Current limitations
 
