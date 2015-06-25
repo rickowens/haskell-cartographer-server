@@ -61,7 +61,7 @@ the participants providing good and correct information.
 Ideas for future features mainly revolve around adding augmented metadata,
 including:
 
-    - The number of instances of any particular service.
-    - Sub-graphs which break down the various versions of any particular
-      service.
+- The number of instances of any particular service.
+- Sub-graphs which break down the various versions of any particular
+  service.
 
